@@ -174,7 +174,7 @@ class _OnBoardinScreenState extends State<OnBoardinScreen> {
                   Container(
                     padding: const EdgeInsets.all(5),
                     color: Colors.white,
-                    child: Image.asset(ImageAssets.topbusinessImage,
+                    child: Image.asset(ImageAssets.footerImage,
                         width: getWidthSize(context) / 3),
                   ),
                 ],

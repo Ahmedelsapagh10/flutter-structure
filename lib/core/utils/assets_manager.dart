@@ -9,9 +9,10 @@ class ImageAssets {
   static const String logo3Image = '$imagePath/app_icon.png';
   static const String logoImage = '$imagePath/1.png';
   static const String profileDefault = '$imagePath/1.png';
-  static const String topbusinessImage = '$imagePath/topbusiness.png';
+  static const String footerImage = '$imagePath/greetings.png';
   static const String introBackgroundImage = '$imagePath/on1.png';
   static const String introBackgroundImage2 = '$imagePath/on2.png';
+  static const String loading = '$imagePath/on2.png';
   // icons
   static const String phoneIcon = '$iconsPath/phone.svg';
 

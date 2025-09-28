@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:new_strucuture/config/themes/theme_noti.dart';
 import 'package:new_strucuture/features/main_screen/cubit/cubit.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'config/routes/app_routes.dart';
@@ -44,26 +45,31 @@ class _MyAppState extends State<MyApp> {
             create: (_) => injector.serviceLocator<MainCubit>(),
           ),
         ],
-        child: GetMaterialApp(
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          theme: appTheme(),
-          themeMode: ThemeMode.light,
-          darkTheme: ThemeData.light(),
-          // standard dark theme
-          localizationsDelegates: context.localizationDelegates,
-          debugShowCheckedModeBanner: false,
-          title: AppStrings.appName,
-          onGenerateRoute: AppRoutes.onGenerateRoute,
-          // routes: {
-          // '/': (context) => isWithNotification
-          // ? (initialMessageRcieved?.data['type'] == "office_request")
-          // ? DetailsIssueScreen(newCourtCase: NewCourtCase())
-          // : ((initialMessageRcieved?.data['type'] == "court")
-          // ? DetailsIssueCustomerScreen()
-          // : NotificationsScreen(isLawyer: userType)
-          // : const SplashScreen(),
-          //   }
-        ));
+        child: ValueListenableBuilder<ThemeMode>(
+            valueListenable: ThemeNotifier.themeModeNotifier,
+            builder: (context, themeMode, _) {
+              return GetMaterialApp(
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
+                theme: AppTheme.lightTheme(context: context),
+                darkTheme: AppTheme.darkTheme(context: context),
+                themeMode: themeMode,
+
+                // standard dark theme
+                localizationsDelegates: context.localizationDelegates,
+                debugShowCheckedModeBanner: false,
+                title: AppStrings.appName,
+                onGenerateRoute: AppRoutes.onGenerateRoute,
+                // routes: {
+                // '/': (context) => isWithNotification
+                // ? (initialMessageRcieved?.data['type'] == "office_request")
+                // ? DetailsIssueScreen(newCourtCase: NewCourtCase())
+                // : ((initialMessageRcieved?.data['type'] == "court")
+                // ? DetailsIssueCustomerScreen()
+                // : NotificationsScreen(isLawyer: userType)
+                // : const SplashScreen(),
+                //   }
+              );
+            }));
   }
 }

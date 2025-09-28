@@ -13,6 +13,8 @@ class LoginRepo {
       return Right(LoginModel.fromJson(response));
     } on ServerException {
       return Left(ServerFailure());
+    } on CacheException {
+      return Left(CacheFailure());
     }
   }
 }
